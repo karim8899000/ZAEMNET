@@ -26,8 +26,7 @@ def s(m):
     keyboard.add(button2)
     keyboard.add(button3)
     b.send_photo(m.chat.id, "https://t.me/Ml_5X/7", caption="""
-بوت ثغرات انترنت مجاناً ✅🔥.
-⚋ ⚋ ⚋ ⚋ ⚋ ⚋
+اختر القسم المطلوب:👇
 """, reply_markup=keyboard)
 
 @b.callback_query_handler(func=lambda call: call.data == 'inline_button')
