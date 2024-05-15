@@ -21,7 +21,7 @@ def s(m):
     keyboard = InlineKeyboardMarkup()
     button1 = InlineKeyboardButton("قسم اتصالات", callback_data='inline_button')
     button2 = InlineKeyboardButton("قسم اورنج", callback_data='inline_button1')
-    button3 = InlineKeyboardButton("قناة البوت الرسميه", url='https://t.me/+cfN-rjoZo4E3YTQ0')
+    button3 = InlineKeyboardButton("قناة البوت الرسميه", url='https://t.me/ElZAEM_Team')
     keyboard.add(button1)
     keyboard.add(button2)
     keyboard.add(button3)
