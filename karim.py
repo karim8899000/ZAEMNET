@@ -7,11 +7,6 @@ import hashlib
 from telebot import TeleBot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-os.system('pip install telebot')
-os.system('pip install requests')
-os.system('pip install base64')
-os.system('pip install colorama')
-os.system('pip install pyfiglet')
 
 t = "6736219238:AAFoIzogpOTlgGmXVePus8Wc86K-zqnzTCA"
 b = telebot.TeleBot(t)
@@ -21,7 +16,7 @@ def s(m):
     keyboard = InlineKeyboardMarkup()
     button1 = InlineKeyboardButton("قسم اتصالات", callback_data='inline_button')
     button2 = InlineKeyboardButton("قسم اورنج", callback_data='inline_button1')
-    button3 = InlineKeyboardButton("قناة البوت الرسميه", url='https://t.me/+wCpEr99CuKFlMWJk')
+    button3 = InlineKeyboardButton("قناة البوت الرسميه", url='https://t.me/+wCpEr99CuKFlMWJ')
     keyboard.add(button1)
     keyboard.add(button2)
     keyboard.add(button3)
@@ -31,6 +26,7 @@ def s(m):
 البوت متخصص لثغرات الانترنت المجاني👑
 
          اختر القسم المطلوب : 👇
+⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋
 """, reply_markup=keyboard)
 
 @b.callback_query_handler(func=lambda call: call.data == 'inline_button')
