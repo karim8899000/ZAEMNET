@@ -1,6 +1,4 @@
-telebot
-pyfiglet
-colorama
+websocket
 requests
 gunicorn
 Flask
