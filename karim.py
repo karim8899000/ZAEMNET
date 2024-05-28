@@ -8,7 +8,7 @@ from telebot import TeleBot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-t = "6736219238:AAFoPW8oQW4m7CIOKWx4YREFJIbt5NslSgc"
+t = "6302801952:AAHJxncvIQpfiMZ9F3kF95B5vfMB1CWMrYE"
 b = telebot.TeleBot(t)
 
 @b.message_handler(commands=["start"])
@@ -16,17 +16,16 @@ def s(m):
     keyboard = InlineKeyboardMarkup()
     button1 = InlineKeyboardButton("قسم اتصالات", callback_data='inline_button')
     button2 = InlineKeyboardButton("قسم اورنج", callback_data='inline_button1')
-    button3 = InlineKeyboardButton("قناة البوت الرسميه", url='https://t.me/+YowTqWVGnDRlOGI0')
+    button3 = InlineKeyboardButton("قناة البوت الرسميه", url='https://t.me/ElZAEM_Team')
     keyboard.add(button1)
     keyboard.add(button2)
     keyboard.add(button3)
-    b.send_photo(m.chat.id, "https://t.me/Ml_5X/7", caption="""
+    b.send_photo(m.chat.id, "https://t.me/k08", caption="""
 مرحبا بك في بوت تيم الزعيم ☠️🔥
 
 البوت متخصص لثغرات الانترنت المجاني👑
 
          اختر القسم المطلوب : 👇
-⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ 
 """, reply_markup=keyboard)
 
 @b.callback_query_handler(func=lambda call: call.data == 'inline_button')
