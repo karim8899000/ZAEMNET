@@ -26,10 +26,10 @@ def s(m):
     keyboard.add(button1)
     keyboard.add(button4)
     keyboard.add(button3)
-    b.send_photo(m.chat.id, "https://t.me/ElZAEM_Team", caption="""
+    b.send_photo(m.chat.id, "https://t.me/MM_5_1/2", caption="""
 مرحبا بك في بوت تيم الزعيم ☠️🔥
 
-البوت متخصص لثغرات الانترنت المجاني👑
+البوت لثغرات الانترنت المجاني 👑
 
          اختر القسم المطلوب : 👇
 """, reply_markup=keyboard)
