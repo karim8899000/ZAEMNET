@@ -1,1 +1,1 @@
-worker: python karim.py
+gunicorn app:app
