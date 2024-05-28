@@ -8,7 +8,7 @@ from telebot import TeleBot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-t = "6736219238:AAFoIzogpOTlgGmXVePus8Wc86K-zqnzTCA"
+t = "6736219238:AAGj0a5VIWxTodXBeUSiyseKgpVtwLlokW0"
 b = telebot.TeleBot(t)
 
 @b.message_handler(commands=["start"])
