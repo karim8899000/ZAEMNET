@@ -1,7 +1,6 @@
 import os
 import telebot
 import requests
-import base64
 import xml.etree.ElementTree as ET
 import hashlib
 from telebot import TeleBot
