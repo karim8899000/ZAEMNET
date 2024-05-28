@@ -6,6 +6,11 @@ import hashlib
 from telebot import TeleBot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
+os.system('pip install telebot')
+os.system('pip install requests')
+os.system('pip install base64')
+os.system('pip install colorama')
+os.system('pip install pyfiglet')
 
 t = "6736219238:AAFoPW8oQW4m7CIOKWx4YREFJIbt5NslSgc"
 b = telebot.TeleBot(t)
