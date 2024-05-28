@@ -25,7 +25,7 @@ def s(m):
     keyboard.add(button1)
     keyboard.add(button2)
     keyboard.add(button3)
-    b.send_photo(m.chat.id, "https://t.me/karim123010/20688", caption="""
+    b.send_photo(m.chat.id, "https://t.me/k", caption="""
 مرحبا بك في بوت تيم الزعيم ☠️🔥
 
 البوت متخصص لثغرات الانترنت المجاني👑
