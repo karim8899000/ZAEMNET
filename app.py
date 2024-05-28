@@ -8,7 +8,6 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 os.system('pip install telebot')
 os.system('pip install requests')
-os.system('pip install base64')
 os.system('pip install colorama')
 os.system('pip install pyfiglet')
 
