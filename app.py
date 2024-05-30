@@ -1,15 +1,12 @@
 import os
 import telebot
 import requests
+import base64
 import xml.etree.ElementTree as ET
 import hashlib
 from telebot import TeleBot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-os.system('pip install telebot')
-os.system('pip install requests')
-os.system('pip install colorama')
-os.system('pip install pyfiglet')
 
 t = "6736219238:AAFoPW8oQW4m7CIOKWx4YREFJIbt5NslSgc"
 b = telebot.TeleBot(t)
@@ -17,14 +14,14 @@ b = telebot.TeleBot(t)
 @b.message_handler(commands=["start"])
 def s(m):
     keyboard = InlineKeyboardMarkup()
-    button1 = InlineKeyboardButton("قســم اتصالات", callback_data='inline_button')
-    button2 = InlineKeyboardButton("قســم اورنج", callback_data='inline_button1')
-    button4 = InlineKeyboardButton("تنزيل من السوشيال", url='https://t.me/Mm_9_bot')
-    button3 = InlineKeyboardButton("قناة البوت الرسميه", url='https://t.me/ElZAEM_Team')
+    button1 = InlineKeyboardButton("قسم اتصالات", callback_data='inline_button')
+    button2 = InlineKeyboardButton("قسم اورنج", callback_data='inline_button1')
+    button3 = InlineKeyboardButton("تنزيل من السوشيال", url='https://t.me/Mm_9_bot')
+    button4 = InlineKeyboardButton("قناة البوت الرسميه", url='https://t.me/ElZAEM_Team')
     keyboard.add(button2)
     keyboard.add(button1)
-    keyboard.add(button4)
     keyboard.add(button3)
+    keyboard.add(button4)
     b.send_photo(m.chat.id, "https://t.me/MM_5_1/2", caption="""
 مرحبا بك في بوت تيم الزعيم ☠️🔥
 
