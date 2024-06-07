@@ -6,30 +6,45 @@ import xml.etree.ElementTree as ET
 import hashlib
 from telebot import TeleBot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
-
-
 t = "6736219238:AAFoPW8oQW4m7CIOKWx4YREFJIbt5NslSgc"
+TOKEN=t
 b = telebot.TeleBot(t)
+channel_username='@TGT_3'  
+
+def check_subscription(chat_id):
+    url = f"https://api.telegram.org/bot{TOKEN}/getChatMember?chat_id={channel_username}&user_id={chat_id}"
+    res = requests.get(url).json()
+    if res['ok']:
+        status = res['result']['status']
+        return status in ["creator", "member", "administrator"]
+    else:
+        return False
 
 @b.message_handler(commands=["start"])
 def s(m):
-    keyboard = InlineKeyboardMarkup()
-    button1 = InlineKeyboardButton("قسم اتصالات", callback_data='inline_button')
-    button2 = InlineKeyboardButton("قسم اورنج", callback_data='inline_button1')
-    button3 = InlineKeyboardButton("تنزيل من السوشيال", url='https://t.me/Mm_9_bot')
-    button4 = InlineKeyboardButton("قناة البوت الرسميه", url='https://t.me/ElZAEM_Team')
-    keyboard.add(button2)
-    keyboard.add(button1)
-    keyboard.add(button3)
-    keyboard.add(button4)
-    b.send_photo(m.chat.id, "https://t.me/MM_5_1/2", caption="""
+    chat_id = m.chat.id
+
+    if check_subscription(chat_id):
+     keyboard = InlineKeyboardMarkup()
+     button1 = InlineKeyboardButton("قسم اتصالات", callback_data='inline_button')
+     button2 = InlineKeyboardButton("قسم اورنج", callback_data='inline_button1')
+     button4 = InlineKeyboardButton("قناة البــوت", url='https://t.me/ElZAEM_Team')
+     button3 = InlineKeyboardButton("تنزيل من السوشيال", url='https://t.me/Mm_9_bot')
+     keyboard.add(button2)
+     keyboard.add(button1)
+     keyboard.add(button3)
+     keyboard.add(button4)
+     photourl = "https://t.me/MM_5_1/2"
+     captiontext = """
 مرحبا بك في بوت تيم الزعيم ☠️🔥
 
 البوت لثغرات الانترنت المجاني 👑
 
          اختر القسم المطلوب : 👇
-""", reply_markup=keyboard)
-
+        """
+     b.send_photo(m.chat.id, photourl, caption=captiontext, reply_markup=keyboard)
+    else:
+        b.send_message(chat_id, f'يجب عليك الاشتراك بقناة البوت 👇\n{channel_username}\n- ثم اضغط  \n/start')
 @b.callback_query_handler(func=lambda call: call.data == 'inline_button')
 def callback_query(call):
     keyboard = InlineKeyboardMarkup()
@@ -46,31 +61,31 @@ def callback_query(call):
 
 @b.callback_query_handler(func=lambda call: call.data == '500_mb')
 def process_callback_500_mb(call):
-    b.send_message(call.message.chat.id, "📲 | ادخل رقم الهاتف")
+    b.send_message(call.message.chat.id, "ادخل رقم الهاتف 📲")
     b.register_next_step_handler(call.message, validate_phone_number)
 
 def validate_phone_number(m):
     global n
     phone_number = m.text
     if len(phone_number) != 11 or not phone_number.isdigit():
-        b.send_message(m.chat.id, "⚠️ | رقم الهاتف غير صحيح")
+        b.send_message(m.chat.id, "رقم الهاتف غير صحيح ⚠")
         b.register_next_step_handler(m, validate_phone_number)
     else:
         n = phone_number
-        b.send_message(m.chat.id, "📩 | ادخل الباسوورد")
+        b.send_message(m.chat.id, "ادخل الباسورد  📩")
         b.register_next_step_handler(m, validate_password)
 
 def validate_password(m):
     global p
     p = m.text
-    b.send_message(m.chat.id, "📧 | ادخل الايميل")
+    b.send_message(m.chat.id, "ادخل الايميل 📧")
     b.register_next_step_handler(m, validate_email)
 
 def validate_email(m):
     global e
     e = m.text
     if "@" not in e:
-        b.send_message(m.chat.id, "⚠️ | الايميل غير صحيح")
+        b.send_message(m.chat.id, "الايميل غير صحيح ⚠️")
         b.register_next_step_handler(m, validate_email)
     else:
         if "01" in n:
@@ -154,11 +169,11 @@ def validate_email(m):
                         break
             else:
                 b.send_message(m.chat.id, """
-⛔ | عفوا حاول تاني بكره
+عفوا حاول تاني بكره ⛔
 """)
         else:
             b.send_message(m.chat.id, """
-🚫 | الرقم او الباسورد غلط
+الرقم او الباسورد غلط 🚫
 """)
         if "true" in l_o.text:
             s_t = l_o.headers["Set-Cookie"]
@@ -200,22 +215,22 @@ def validate_email(m):
             s_s = requests.post(u_s, headers=h_s, data=d_s).text
             if "true" in s_s:
                 b.send_message(m.chat.id, """
-✅ | تم تفعيل بنجاح
+تم تفعيل بنجاح ✅
 """)
             else:
                 b.send_message(m.chat.id, """
-🔊 | تحقق من بياناتك
+تحقق من بياناتك 🔊
 """)
 
 @b.callback_query_handler(func=lambda call: call.data == 'execute_command')
 def execute_command(call):
-    b.send_message(call.message.chat.id, "ادخل رقم الهاتف : \n مثال : 01200000000")
+    b.send_message(call.message.chat.id, "ادخل رقم الهاتف  📲")
 
     b.register_next_step_handler(call.message, process_phone_number)
 
 def process_phone_number(message):
     number = message.text
-    b.send_message(message.chat.id, "ادخل باسورد الحساب :")
+    b.send_message(message.chat.id, "ادخل الباسورد  📩")
 
     b.register_next_step_handler(message, process_password, number)
 
@@ -274,7 +289,7 @@ def process_password(message, number):
             if y == "Success":
                 b.send_message(message.chat.id, "تم اضافة 524 ميجا بنجاح ✅")
             else:
-                b.send_message(message.chat.id, "انت واخد 500 ميجا قريب")
+                b.send_message(message.chat.id, "انت واخد 500 ميجا قريب 🤕")
         else:
             b.send_message(message.chat.id, "رقم الهاتف او الباسورد خطأ ❌")
     except:
