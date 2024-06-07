@@ -28,12 +28,10 @@ def s(m):
      keyboard = InlineKeyboardMarkup()
      button1 = InlineKeyboardButton("قسم اتصالات", callback_data='inline_button')
      button2 = InlineKeyboardButton("قسم اورنج", callback_data='inline_button1')
-     button4 = InlineKeyboardButton("قناة البــوت", url='https://t.me/ElZAEM_Team')
      button3 = InlineKeyboardButton("تنزيل من السوشيال", url='https://t.me/Mm_9_bot')
      keyboard.add(button2)
      keyboard.add(button1)
      keyboard.add(button3)
-     keyboard.add(button4)
      photourl = "https://t.me/MM_5_1/2"
      captiontext = """
 مرحبا بك في بوت تيم الزعيم ☠️🔥
