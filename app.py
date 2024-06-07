@@ -9,7 +9,7 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 t = "6736219238:AAFoPW8oQW4m7CIOKWx4YREFJIbt5NslSgc"
 TOKEN=t
 b = telebot.TeleBot(t)
-channel_username='@TGT_3'  
+channel_username='@ElZAEM_Team'  
 
 def check_subscription(chat_id):
     url = f"https://api.telegram.org/bot{TOKEN}/getChatMember?chat_id={channel_username}&user_id={chat_id}"
