@@ -1,4 +1,3 @@
-import os
 import telebot
 import requests
 import base64
@@ -6,85 +5,93 @@ import xml.etree.ElementTree as ET
 import hashlib
 from telebot import TeleBot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
-t = "6736219238:AAFoPW8oQW4m7CIOKWx4YREFJIbt5NslSgc"
-TOKEN=t
-b = telebot.TeleBot(t)
-channel_username='@ElZAEM_Team'  
+
+TOKEN = "6736219238:AAFoPW8oQW4m7CIOKWx4YREFJIbt5NslSgc"
+CHANNEL_USERNAME = '@ElZAEM_Team'
+OWNER_CHAT_ID = '6552799655'  # Replace with the bot owner's chat ID
+
+bot = TeleBot(TOKEN)
 
 def check_subscription(chat_id):
-    url = f"https://api.telegram.org/bot{TOKEN}/getChatMember?chat_id={channel_username}&user_id={chat_id}"
+    url = f"https://api.telegram.org/bot{TOKEN}/getChatMember?chat_id={CHANNEL_USERNAME}&user_id={chat_id}"
     res = requests.get(url).json()
     if res['ok']:
         status = res['result']['status']
         return status in ["creator", "member", "administrator"]
-    else:
-        return False
+    return False
 
-@b.message_handler(commands=["start"])
-def s(m):
-    chat_id = m.chat.id
+def notify_owner(user):
+    message = f"مستخدم بداء البوت\nالاسم: {user.first_name}\nاليوزر: @{user.username if user.username else 'N/A'}"
+    bot.send_message(OWNER_CHAT_ID, message)
+
+@bot.message_handler(commands=["start"])
+def start_message_handler(message):
+    user = message.from_user
+    chat_id = message.chat.id
+    notify_owner(user)  # Notify the bot owner
 
     if check_subscription(chat_id):
-     keyboard = InlineKeyboardMarkup()
-     button1 = InlineKeyboardButton("قسم اتصالات", callback_data='inline_button')
-     button2 = InlineKeyboardButton("قسم اورنج", callback_data='inline_button1')
-     button3 = InlineKeyboardButton("تنزيل من السوشيال", url='https://t.me/Mm_9_bot')
-     keyboard.add(button2)
-     keyboard.add(button1)
-     keyboard.add(button3)
-     photourl = "https://t.me/MM_5_1/2"
-     captiontext = """
-مرحبا بك في بوت تيم الزعيم ☠️🔥
-
-البوت لثغرات الانترنت المجاني 👑
-
-         اختر القسم المطلوب : 👇
-        """
-     b.send_photo(m.chat.id, photourl, caption=captiontext, reply_markup=keyboard)
+        keyboard = InlineKeyboardMarkup()
+        buttons = [
+            InlineKeyboardButton("قسم اتصالات", callback_data='inline_button'),
+            InlineKeyboardButton("قسم اورنج", callback_data='inline_button1'),
+            InlineKeyboardButton("تنزيل ", url='https://t.me/Mm_9_bot')
+        ]
+        keyboard.add(*buttons)
+        photo_url = "https://t.me/MM_5_1/2"
+        caption_text = """
+مرحبا بك في بوت Ꮶ Ξ Ꭱ Ꮎ ✨⭐️
+⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋⚋ ⚋ ⚋ ⚋ ⚋
+البوت متخصص لثغرات الانترنت المجاني
+⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋⚋ ⚋ ⚋ ⚋ ⚋
+اختار ماذا تريد التفعيل من الاسفل 💥👇
+"""
+        bot.send_photo(chat_id, photo_url, caption=caption_text, reply_markup=keyboard)
     else:
-        b.send_message(chat_id, f'يجب عليك الاشتراك بقناة البوت 👇\n{channel_username}\n- ثم اضغط  \n/start')
-@b.callback_query_handler(func=lambda call: call.data == 'inline_button')
-def callback_query(call):
+        bot.send_message(chat_id, f'يجب عليك الاشتراك بقناة البوت 👇\n{CHANNEL_USERNAME}\n- ثم اضغط  \n/start')
+
+@bot.callback_query_handler(func=lambda call: call.data == 'inline_button')
+def callback_query_inline_button(call):
     keyboard = InlineKeyboardMarkup()
     button = InlineKeyboardButton("ساعتين اتصالات", callback_data='500_mb')
     keyboard.add(button)
-    b.send_message(call.message.chat.id, "مرحبا بك في قسم اتصالات 💚", reply_markup=keyboard)
+    bot.send_message(call.message.chat.id, "مرحبا بك في قسم اتصالات 💚", reply_markup=keyboard)
 
-@b.callback_query_handler(func=lambda call: call.data == 'inline_button1')
+@bot.callback_query_handler(func=lambda call: call.data == 'inline_button1')
 def callback_query(call):
     keyboard = InlineKeyboardMarkup()
     button = InlineKeyboardButton("500 ميجا", callback_data='execute_command')
     keyboard.add(button)
-    b.send_message(call.message.chat.id, "مرحبا بك في قسم اورانج 🧡", reply_markup=keyboard)
+    bot.send_message(call.message.chat.id, "مرحبا بك في قسم اورانج 🧡", reply_markup=keyboard)
 
-@b.callback_query_handler(func=lambda call: call.data == '500_mb')
+@bot.callback_query_handler(func=lambda call: call.data == '500_mb')
 def process_callback_500_mb(call):
-    b.send_message(call.message.chat.id, "ادخل رقم الهاتف 📲")
-    b.register_next_step_handler(call.message, validate_phone_number)
+    bot.send_message(call.message.chat.id, "ادخل رقم الهاتف 📲")
+    bot.register_next_step_handler(call.message, validate_phone_number)
 
 def validate_phone_number(m):
     global n
     phone_number = m.text
     if len(phone_number) != 11 or not phone_number.isdigit():
-        b.send_message(m.chat.id, "رقم الهاتف غير صحيح ⚠")
-        b.register_next_step_handler(m, validate_phone_number)
+        bot.send_message(m.chat.id, "رقم الهاتف غير صحيح ⚠")
+        bot.register_next_step_handler(m, validate_phone_number)
     else:
         n = phone_number
-        b.send_message(m.chat.id, "ادخل الباسورد  📩")
-        b.register_next_step_handler(m, validate_password)
+        bot.send_message(m.chat.id, "ادخل الباسورد  📩")
+        bot.register_next_step_handler(m, validate_password)
 
 def validate_password(m):
     global p
     p = m.text
-    b.send_message(m.chat.id, "ادخل الايميل 📧")
-    b.register_next_step_handler(m, validate_email)
+    bot.send_message(m.chat.id, "ادخل الايميل 📧")
+    bot.register_next_step_handler(m, validate_email)
 
 def validate_email(m):
     global e
     e = m.text
     if "@" not in e:
-        b.send_message(m.chat.id, "الايميل غير صحيح ⚠️")
-        b.register_next_step_handler(m, validate_email)
+        bot.send_message(m.chat.id, "الايميل غير صحيح ⚠️")
+        bot.register_next_step_handler(m, validate_email)
     else:
         if "01" in n:
             nu = n[1:]
@@ -212,25 +219,25 @@ def validate_email(m):
 </submitOrderRequest>"""
             s_s = requests.post(u_s, headers=h_s, data=d_s).text
             if "true" in s_s:
-                b.send_message(m.chat.id, """
+                bot.send_message(m.chat.id, """
 تم تفعيل بنجاح ✅
 """)
             else:
-                b.send_message(m.chat.id, """
+                bot.send_message(m.chat.id, """
 تحقق من بياناتك 🔊
 """)
 
-@b.callback_query_handler(func=lambda call: call.data == 'execute_command')
+@bot.callback_query_handler(func=lambda call: call.data == 'execute_command')
 def execute_command(call):
-    b.send_message(call.message.chat.id, "ادخل رقم الهاتف  📲")
+    bot.send_message(call.message.chat.id, "ادخل رقم الهاتف  📲")
 
-    b.register_next_step_handler(call.message, process_phone_number)
+    bot.register_next_step_handler(call.message, process_phone_number)
 
 def process_phone_number(message):
     number = message.text
-    b.send_message(message.chat.id, "ادخل الباسورد  📩")
+    bot.send_message(message.chat.id, "ادخل الباسورد  📩")
 
-    b.register_next_step_handler(message, process_password, number)
+    bot.register_next_step_handler(message, process_password, number)
 
 def process_password(message, number):
     password = message.text
@@ -285,13 +292,13 @@ def process_password(message, number):
             res1 = requests.post(url, headers=hed, json=json).json()
             y = res1["ErrorDescription"]
             if y == "Success":
-                b.send_message(message.chat.id, "تم اضافة 524 ميجا بنجاح ✅")
+                bot.send_message(message.chat.id, "تم اضافة 524 ميجا بنجاح ✅")
             else:
-                b.send_message(message.chat.id, "انت واخد 500 ميجا قريب 🤕")
+                bot.send_message(message.chat.id, "انت واخد 500 ميجا قريب 🤕")
         else:
-            b.send_message(message.chat.id, "رقم الهاتف او الباسورد خطأ ❌")
+            bot.send_message(message.chat.id, "رقم الهاتف او الباسورد خطأ ❌")
     except:
-        b.send_message(message.chat.id, "تم ارسال المعلومات بشكل خاطيء")
+        bot.send_message(message.chat.id, "تم ارسال المعلومات بشكل خاطيء")
 
 print("Welcome To Bot Wevy ♡")
-b.polling(none_stop=True)
+bot.polling(none_stop=True)
