@@ -173,11 +173,11 @@ def validate_email(m):
                     if o_f:
                         break
             else:
-                b.send_message(m.chat.id, """
+                bot.send_message(m.chat.id, """
 عفوا حاول تاني بكره ⛔
 """)
         else:
-            b.send_message(m.chat.id, """
+            bot.send_message(m.chat.id, """
 الرقم او الباسورد غلط 🚫
 """)
         if "true" in l_o.text:
@@ -270,7 +270,7 @@ def process_password(message, number):
         req1 = requests.post(ur1, headers=headers, data=data1)
         resp = req1.json()['SignInUserResult']["ErrorDescription"]
         if 'Success' in resp:
-            b.send_message(message.chat.id, "Done login")
+            bot.send_message(message.chat.id, "Done login")
             userid = req1.json()["SignInUserResult"]["UserData"]["UserID"]
             url = "https://services.orange.eg/APIs/Promotions/api/CAF/Redeem"
             hed = {"_ctv": ctv, "_htv": htv,
