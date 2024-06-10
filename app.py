@@ -6,7 +6,7 @@ import hashlib
 from telebot import TeleBot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-TOKEN = "6736219238:AAFoPW8oQW4m7CIOKWx4YREFJIbt5NslSgc"
+TOKEN = "6736219238:AAGkRomDC2Y85i8sXLsrkVg7qZqTs2fPb8U"
 CHANNEL_USERNAME = '@ElZAEM_Team'
 OWNER_CHAT_ID = '6552799655'  # Replace with the bot owner's chat ID
 
