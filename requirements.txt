@@ -1,3 +1,11 @@
+telebot
+bs4
+pyfiglet
+instaloader
+fake_useragent
+colorama
+pytube
+requests
 gunicorn
 Flask
 autopep8==2.0.4
