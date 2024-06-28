@@ -1,3 +1,9 @@
+import os
+os.system('pip install telebot')
+os.system('pip install bs4')
+os.system('pip install instaloader')
+os.system('pip install fake_useragent')
+os.system('pip install pytube')
 import telebot
 from telebot import types
 import requests
