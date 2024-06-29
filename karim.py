@@ -34,7 +34,7 @@ admin = ida
 
 
 ADMIN_ID = ida
-CHANNELS = [ "@ElZAEM_Team","@KingsNet70","@passward_Amr"] 
+CHANNELS = [ "@ElZAEM_Team","@KingsNet70","@passward_Amr","@TGT_3"] 
 
 
 
