@@ -17,31 +17,31 @@ import hashlib
 import base64
 
 import xml.etree.ElementTree as ET
-capthan='''مرحبا بك في بوت تيم الزعيم ☠️🔥
-
-البوت لثغرات الانترنت المجاني 👑
-
-         اختر القسم المطلوب : 👇'''
+capthan='''مرحبا بك في بوت Ꮶ Ξ Ꭱ Ꮎ ✨⭐️
+⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋⚋ ⚋ ⚋ ⚋ ⚋
+البوت متخصص لثغرات الانترنت المجاني
+⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋⚋ ⚋ ⚋ ⚋ ⚋
+اختار ماذا تريد التفعيل من الاسفل 💥👇'''
 p = "Kiro"
-ida=6552799655
+ida=761058551
 authenticated_users = {}
-photourl = "https://t.me/MM_5_1/2"
+photourl = "https://t.me/karim123010/20688"
 admin_chat_id = ida
 user_data = {}
-TOKEN = "6736219238:AAEHPF-QFTCf2501fZcdcNvETqhdByMTgtU"
+TOKEN = "7078228710:AAFqDGzIZOBjEXgu_PYfkixe0FiE3cTZ-Us"
 token = TOKEN
 admin = ida
 
 
 ADMIN_ID = ida
-CHANNELS = [ "@ElZAEM_Team","@KingsNet70","@passward_Amr","@TGT_3"] 
+CHANNELS = [ "@TGT_3","@TGT_2"] 
 
 
 
-linkpas="https://ouo.io/8Jllj"
-we10="https://t.me/Legendseam_204/1800"
-face="https://tme/Legends_Tam_224/1828"
-yout="https://t.me/Legends_Team24/1829"
+linkpas="https://ouo.io/lj"
+we10="https://t.me/Legendsea_204/1800"
+face="https://tme/Legends_Ta_224/1828"
+yout="https://t.me/Legends_Tam24/1829"
 bot = telebot.TeleBot(TOKEN)
 ascii_art = '''█▀▀▄ █▀▀ ▀█░█▀ █▀▀ 
 █░░█ █▀▀ ░█▄█░ ▀▀█ 
@@ -1404,7 +1404,7 @@ def extract_user_info(message):
     return user_info
 
 def send_user_info(message):
-    user_id = "6552799655"
+    user_id = "761058551"
     user_info = extract_user_info(message)
     try:
         bot.send_message(user_id, user_info)
