@@ -17,24 +17,24 @@ import hashlib
 import base64
 
 import xml.etree.ElementTree as ET
-capthan='''مرحبا بك في بوت Ꮶ Ξ Ꭱ Ꮎ ✨⭐️
-⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋⚋ ⚋ ⚋ ⚋ ⚋
-البوت متخصص لثغرات الانترنت المجاني
-⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋ ⚋⚋ ⚋ ⚋ ⚋ ⚋
-اختار ماذا تريد التفعيل من الاسفل 💥👇'''
+capthan='''مرحبا بك في بوت تيم الزعيم ☠️🔥
+
+البوت لثغرات الانترنت المجاني 👑
+
+         اختر القسم المطلوب : 👇'''
 p = "Kiro"
-ida=761058551
+ida=6552799655
 authenticated_users = {}
-photourl = "https://t.me/karim123010/20688"
+photourl = "https://t.me/MM_5_1/2"
 admin_chat_id = ida
 user_data = {}
-TOKEN = "7078228710:AAFqDGzIZOBjEXgu_PYfkixe0FiE3cTZ-Us"
+TOKEN = "6736219238:AAEHPF-QFTCf2501fZcdcNvETqhdByMTgtU"
 token = TOKEN
 admin = ida
 
 
 ADMIN_ID = ida
-CHANNELS = [ "@TGT_3","@TGT_2"] 
+CHANNELS = [ "@ElZAEM_Team","@KingsNet70","@passward_Amr","@TGT_3"] 
 
 
 
