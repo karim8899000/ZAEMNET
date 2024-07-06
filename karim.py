@@ -25,7 +25,7 @@ capthan='''مرحبا بك في بوت تيم الزعيم ☠️🔥
 p = "Kiro"
 ida=6552799655
 authenticated_users = {}
-photourl = "https://t.me/MM_5_1/2"
+photourl = "https://t.me/MM_M5_1/2"
 admin_chat_id = ida
 user_data = {}
 TOKEN = "6736219238:AAH79tnN5xW8oMfngLp2aAK6LgfTAQTlWkU"
@@ -329,7 +329,7 @@ def ask_for_authentication(message):
                 for channel in CHANNELS:
                     btn = types.InlineKeyboardButton(text=f"اشترك في {channel}", url=f"https://t.me/{channel[1:]}")
                     markup.add(btn)
-                bot.reply_to(message, "🚸| عذرا عزيزي عليك الاشتراك بقنوات البوت 🔰", reply_markup=markup)
+                bot.reply_to(message, "اشترك بالقنوات واضغط /start ", reply_markup=markup)
 
 def check_password(message):
     chat_id = message.chat.id
@@ -360,8 +360,7 @@ def start(message):
             keyboard.add(
                 types.InlineKeyboardButton('قسم  اورنج', callback_data='open_menu'),
                 types.InlineKeyboardButton('قسم اتصالات', callback_data='open_menu2'),
-                types.InlineKeyboardButton('قسم فودفون', callback_data='open_menu3'),
-                types.InlineKeyboardButton('قسم الرشق', callback_data='rash'),
+                types.InlineKeyboardButton('قسم فودفون', callback_data='open_menu3'),    
                 types.InlineKeyboardButton('قسم التحميل', callback_data='download')
             )
 
