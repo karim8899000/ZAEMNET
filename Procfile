@@ -1,1 +1,1 @@
-web: python karim.py
+worker: python karim.py
